@@ -29,7 +29,7 @@ public class KinematicBody2D : Godot.KinematicBody2D
     if(slideCount > 0){
       for(int i = 0; i < slideCount; i++){
         KinematicCollision2D col = GetSlideCollision(i);
-        if(col.Collider is StaticBody2D collider)
+        if(col.Collider is StaticBody2D collider || col.Collider is TileMap)
         {
             TouchingGround = true;
         }
