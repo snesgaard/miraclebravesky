@@ -1,0 +1,16 @@
+sprites=$(wildcard sprite/*.aseprite)
+jsons=$(addprefix ./export/, $(notdir $(sprites:.aseprite=.json)))
+pngs=$(addprefix ./export/, $(notdir $(sprites:.aseprite=.png)))
+aseprite=~/.steam/steam/steamapps/common/Aseprite/aseprite
+
+all: $(jsons)
+
+
+export/%.json: sprite/%.aseprite
+	@mkdir -p $(dir $@)
+	@$(aseprite) -b $< --sheet $(@:.json=.png) --data $@ \
+	           --list-slices --format json-array\
+	           --list-tags
+
+clean:
+	@rm -rf export/
