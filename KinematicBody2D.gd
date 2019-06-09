@@ -16,7 +16,23 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func _input(event):
+	if not event is InputEventKey:
+		return
+	if event.scancode == KEY_A:
+		print("foo")
+
 func _physics_process(dt):
+	if Input.is_key_pressed(KEY_RIGHT):
+		vel.x = 200
+	elif Input.is_key_pressed(KEY_LEFT):
+		vel.x = -200
+	else:
+		vel.x = 0
 	vel += GRAVITY * dt
-	var info = move_and_slide(vel)
-	print(info)
+	var info = move_and_collide(vel * dt)
+	if info and info.normal.dot(Vector2(0, -1)) > 0.9:
+		vel.y = min(0, vel.y)
+		if Input.is_key_pressed(KEY_SPACE):
+			vel.y = -200
+	
