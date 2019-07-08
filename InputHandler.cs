@@ -28,6 +28,14 @@ public class InputHandler : Node2D
       if(addedSpeed == 0){
         kin.velocity.x *= 0.4f;
       }
+    
+      if(addedSpeed < 0){
+        (kin.GetNode("Gun") as Gun).Direction = true;
+        }else if (addedSpeed > 0){
+         (kin.GetNode("Gun") as Gun).Direction = false;    
+      }
+    
+    
       if(Input.IsKeyPressed((int) KeyList.Space) && foot.IsTouching){
         kin.velocity.y = -JumpSpeed;
         kin.TouchingGround = false;
