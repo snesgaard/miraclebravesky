@@ -12,6 +12,14 @@ public class Gun : Godot.Node2D
     {
         
     }
+	
+	public void Fire(){
+     var bullet_scene =  (PackedScene)ResourceLoader.Load("res://Bullet.tscn");
+	   var kin = this.GetParent() as KinematicBody2D;
+	   Node2D bullet = (Node2D)bullet_scene.Instance();
+	   bullet.Position = this.GetGlobalPosition();
+	kin.GetParent().AddChild(bullet);
+	}
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
   public override void _Process(float delta)

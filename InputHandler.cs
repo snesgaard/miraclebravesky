@@ -10,6 +10,16 @@ public class InputHandler : Node2D
     [Export]
     public float JumpSpeed{get;set;} = 100;
 
+   public override void _Input(InputEvent evt){
+     if(evt is InputEventKey key){
+       if(key.Scancode == (int)KeyList.Control){
+          var kin = this.GetParent() as KinematicBody2D;
+      
+          (kin.GetNode("Gun") as Gun).Fire();       }
+       
+     }
+   }
+
   public override void _Process(float delta)
   {
       var kin = this.GetParent() as KinematicBody2D;
