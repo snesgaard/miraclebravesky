@@ -75,7 +75,7 @@ meta = dict(
     image = args.atlas,
     format = "RGBA8888",
     size = dict(w=atlas.shape[1], h=atlas.shape[0]),
-    scale = 1,
+    scale = "1",
     slices=[],
     frameTags=tags
 )
