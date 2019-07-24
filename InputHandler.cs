@@ -44,12 +44,16 @@ public class InputHandler : Node2D
 
       if(addedSpeed == 0){
         kin.velocity.x *= 0.4f;
-        anim.Play("twohand_run_run2idle");
+        var idleAnim = "twohand_run_run2idle";
+        if(anim.AssignedAnimation != idleAnim)
+            anim.Play(idleAnim);
         
       }else{
+        var run_anim = "twohand_run_run";
          
-         anim.Play("twohand_run_run");
+          anim.Play(run_anim);
         }
+        
     
       if(addedSpeed < 0){
         (kin.GetNode("Gun") as Gun).Direction = true;
