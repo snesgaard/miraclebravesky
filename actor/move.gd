@@ -7,7 +7,7 @@ onready var root = $"../.."
 onready var player = $"../../AnimationPlayer"
 onready var sprite = $"../../Sprite"
 
-func enter():
+func enter(arg):
 	player.play("twohand_run_run")
 
 func get_input_direction():

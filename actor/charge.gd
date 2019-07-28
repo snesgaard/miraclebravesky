@@ -15,7 +15,7 @@ func animation_updates():
 var animation_co = null
 
 
-func enter():
+func enter(arg):
 	animation_co = animation_updates()
 	root.speed.x = 0
 	attack_ready = false

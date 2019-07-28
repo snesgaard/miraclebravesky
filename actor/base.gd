@@ -16,6 +16,12 @@ func update_animation_motion(player, body):
 	
 func update_jump(body, JUMP_SPEED):
 	if body.is_on_floor() and Input.is_action_pressed("jump"):
+		print("jump!!!")
 		body.speed.y = -JUMP_SPEED
 		return true
 	return false
+	
+func get_input_direction():
+	var input_direction = Vector2()
+	input_direction.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
+	return input_direction

@@ -31,7 +31,7 @@ func initialize(start_state):
 	set_active(true)
 	states_stack.push_front(get_node(start_state))
 	current_state = states_stack[0]
-	current_state.enter()
+	current_state.enter({})
 
 func set_active(value):
 	_active = value
@@ -52,7 +52,7 @@ func _on_animation_finished(anim_name):
 		return
 	current_state._on_animation_finished(anim_name)
 
-func _change_state(state_name):
+func _change_state(state_name, arg={}):
 	if not _active:
 		return
 	current_state.exit()
@@ -66,4 +66,4 @@ func _change_state(state_name):
 	emit_signal("state_changed", current_state)
 	
 	if state_name != "previous":
-		current_state.enter()
+		current_state.enter(arg)

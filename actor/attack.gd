@@ -26,7 +26,7 @@ var context = null
 func make_context():
 	return {"alive": true}
 
-func enter():
+func enter(arg):
 	context = make_context()
 	animation_co = animation_proc(context)
 
@@ -39,3 +39,5 @@ func update(dt):
 		return
 	if update_jump(root, 0):
 		emit_signal("finished", "idle")
+	if Input.is_action_just_pressed("evade"):
+		emit_signal("finished", "evade")
