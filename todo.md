@@ -1,0 +1,6 @@
+- enemy unit move + shoot
+ - AI: move back and forth. Ray detect if should shoot.
+- health / damage game state : godot serializable
+  -  root level dictionary for storing game state
+  -  or node local
+- dynamic state status function
