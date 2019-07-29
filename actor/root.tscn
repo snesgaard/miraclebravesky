@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://actor/platform_body.gd" type="Script" id=1]
 [ext_resource path="res://assets/actor/build/twohanded_charge.png" type="Texture" id=2]
@@ -14,6 +14,9 @@
 [ext_resource path="res://actor/attack.gd" type="Script" id=12]
 [ext_resource path="res://actor/evade.gd" type="Script" id=13]
 [ext_resource path="res://actor/hitboxes.gd" type="Script" id=14]
+[ext_resource path="res://actor/StateMachine.cs" type="Script" id=15]
+[ext_resource path="res://actor/StateIdle.cs" type="Script" id=16]
+[ext_resource path="res://actor/StateWalking.cs" type="Script" id=17]
 
 [sub_resource type="Animation" id=1]
 length = 0.3
@@ -574,6 +577,7 @@ anims/twohanded_charge_swing = SubResource( 12 )
 anims/twohanded_charge_swing2idle = SubResource( 13 )
 script = ExtResource( 7 )
 jsons = [ "res://assets/actor/build/twohanded_charge.json", "res://assets/actor/build/twohand_cast.json", "res://assets/actor/build/twohand_idle.json", "res://assets/actor/build/twohand_motion.json", "res://assets/actor/build/twohand_run.json" ]
+refresh = false
 
 [node name="body" type="CollisionShape2D" parent="."]
 position = Vector2( 2.41792, -19.2224 )
@@ -608,3 +612,12 @@ script = ExtResource( 14 )
 position = Vector2( 34.4722, -25.8249 )
 shape = SubResource( 15 )
 disabled = true
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 15 )
+
+[node name="Node" type="Node" parent="StateMachine"]
+script = ExtResource( 16 )
+
+[node name="StateIdle" type="Node" parent="StateMachine"]
+script = ExtResource( 17 )
