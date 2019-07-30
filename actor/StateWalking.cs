@@ -3,7 +3,9 @@ using System;
 using System.Diagnostics;
 public class StateWalking : Node, IState
 {
-    public bool IsActive() =>  Input.IsActionPressed("move_right") || Input.IsActionPressed("move_left");
+    [Export]
+    public string Activation{get;set;}
+        public bool IsActive() =>  Input.IsActionPressed(Activation);
     public void Activate() 
     {
         Debug.WriteLine("Start Walking");
@@ -15,7 +17,7 @@ public class StateWalking : Node, IState
         
     }
 
-    public void Update(){
+    public void Update(float dt){
 
     }
     

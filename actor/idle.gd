@@ -27,7 +27,7 @@ func update(dt):
 		dash_ready = true
 	update_motion(dt)
 	update_jump(root, root.JUMP_SPEED)
-	root.speed = root.update_motion(dt, root.speed)
+	#root.speed = root.update_motion(dt, root.speed)
 	update_animation_motion(player, root)
 	
 	if Input.is_action_pressed("attack"):

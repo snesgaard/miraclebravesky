@@ -1,6 +1,6 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
-[ext_resource path="res://actor/platform_body.gd" type="Script" id=1]
+[ext_resource path="res://actor/PlatformBody.cs" type="Script" id=1]
 [ext_resource path="res://assets/actor/build/twohanded_charge.png" type="Texture" id=2]
 [ext_resource path="res://assets/actor/build/twohand_cast.png" type="Texture" id=3]
 [ext_resource path="res://assets/actor/build/twohand_idle.png" type="Texture" id=4]
@@ -17,6 +17,7 @@
 [ext_resource path="res://actor/StateMachine.cs" type="Script" id=15]
 [ext_resource path="res://actor/StateIdle.cs" type="Script" id=16]
 [ext_resource path="res://actor/StateWalking.cs" type="Script" id=17]
+[ext_resource path="res://actor/Walking.cs" type="Script" id=18]
 
 [sub_resource type="Animation" id=1]
 length = 0.3
@@ -616,8 +617,16 @@ disabled = true
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 15 )
 
-[node name="Node" type="Node" parent="StateMachine"]
+[node name="StateIdle" type="Node" parent="StateMachine"]
 script = ExtResource( 16 )
 
-[node name="StateIdle" type="Node" parent="StateMachine"]
+[node name="WalkLeft" type="Node" parent="StateMachine"]
 script = ExtResource( 17 )
+Activation = "move_left"
+
+[node name="WalkRight" type="Node" parent="StateMachine"]
+script = ExtResource( 17 )
+Activation = "move_right"
+
+[node name="Walking" type="Node" parent="StateMachine"]
+script = ExtResource( 18 )

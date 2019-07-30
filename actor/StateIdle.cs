@@ -7,13 +7,13 @@ public class StateIdle : Node, IState
     public void Activate() {}
     public void Deactivate() {}
     
-    public void Update(){}
+    public void Update(float dt){}
 }
 
 public interface IState
 {
     bool IsActive();
     void Activate();
-    void Update();
+    void Update(float delta);
     void Deactivate();
 }
