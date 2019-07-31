@@ -8,12 +8,12 @@ public class StateWalking : Node, IState
         public bool IsActive() =>  Input.IsActionPressed(Activation);
     public void Activate() 
     {
-        Debug.WriteLine("Start Walking");
+        Debug.WriteLine("Start " + this.Name);
         
        }
     public void Deactivate()
     {
-        Debug.WriteLine("Stop Walking");
+        Debug.WriteLine("Stop " + this.Name);
         
     }
 

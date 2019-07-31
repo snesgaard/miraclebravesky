@@ -12,7 +12,7 @@ var life_co = null
 var speed = null
 
 func enter(arg):
-	player.play("twohand_motion_dash")
+	#player.play("twohand_motion_dash")
 	var dir = fsm.direction(.get_input_direction().x)
 	speed = Vector2(SPEED * dir, 0)
 	life_co = life()

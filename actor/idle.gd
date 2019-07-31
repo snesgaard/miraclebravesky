@@ -30,8 +30,6 @@ func update(dt):
 	#root.speed = root.update_motion(dt, root.speed)
 	update_animation_motion(player, root)
 	
-	if Input.is_action_pressed("attack"):
-		emit_signal("finished", "charge")
-	elif Input.is_action_just_pressed("evade") and dash_ready:
+	if Input.is_action_just_pressed("evade") and dash_ready:
 		dash_ready = false
 		emit_signal("finished", "evade")

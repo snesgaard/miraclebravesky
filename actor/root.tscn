@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://actor/PlatformBody.cs" type="Script" id=1]
 [ext_resource path="res://assets/actor/build/twohanded_charge.png" type="Texture" id=2]
@@ -18,6 +18,11 @@
 [ext_resource path="res://actor/StateIdle.cs" type="Script" id=16]
 [ext_resource path="res://actor/StateWalking.cs" type="Script" id=17]
 [ext_resource path="res://actor/Walking.cs" type="Script" id=18]
+[ext_resource path="res://actor/TouchingGround.cs" type="Script" id=19]
+[ext_resource path="res://actor/DoJump.cs" type="Script" id=20]
+[ext_resource path="res://actor/AttackAnimation.cs" type="Script" id=21]
+[ext_resource path="res://actor/StartSwing.cs" type="Script" id=22]
+[ext_resource path="res://actor/Delay.cs" type="Script" id=23]
 
 [sub_resource type="Animation" id=1]
 length = 0.3
@@ -578,7 +583,6 @@ anims/twohanded_charge_swing = SubResource( 12 )
 anims/twohanded_charge_swing2idle = SubResource( 13 )
 script = ExtResource( 7 )
 jsons = [ "res://assets/actor/build/twohanded_charge.json", "res://assets/actor/build/twohand_cast.json", "res://assets/actor/build/twohand_idle.json", "res://assets/actor/build/twohand_motion.json", "res://assets/actor/build/twohand_run.json" ]
-refresh = false
 
 [node name="body" type="CollisionShape2D" parent="."]
 position = Vector2( 2.41792, -19.2224 )
@@ -630,3 +634,44 @@ Activation = "move_right"
 
 [node name="Walking" type="Node" parent="StateMachine"]
 script = ExtResource( 18 )
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource( 17 )
+Activation = "jump"
+
+[node name="TouchingGround" type="Node" parent="StateMachine"]
+script = ExtResource( 19 )
+
+[node name="DoJump" type="Node" parent="StateMachine"]
+script = ExtResource( 20 )
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource( 17 )
+Activation = "attack"
+
+[node name="AttackAnimation" type="Node" parent="StateMachine"]
+script = ExtResource( 21 )
+
+[node name="StartSwing2" type="Node" parent="StateMachine/AttackAnimation"]
+script = ExtResource( 22 )
+Animation = "twohanded_charge_idle2charge"
+
+[node name="StartSwing3" type="Node" parent="StateMachine/AttackAnimation"]
+script = ExtResource( 22 )
+Animation = "twohanded_charge_charge"
+
+[node name="Delay" type="Node" parent="StateMachine/AttackAnimation"]
+script = ExtResource( 23 )
+DelayValue = 0.23
+
+[node name="StartSwing" type="Node" parent="StateMachine/AttackAnimation"]
+script = ExtResource( 22 )
+Animation = "twohanded_charge_swing"
+
+[node name="ChargeSwing" type="Node" parent="StateMachine/AttackAnimation"]
+script = ExtResource( 22 )
+Animation = "twohanded_charge_post_swing"
+
+[node name="EndSwing" type="Node" parent="StateMachine/AttackAnimation"]
+script = ExtResource( 22 )
+Animation = "twohanded_charge_swing2idle"

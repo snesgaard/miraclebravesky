@@ -31,19 +31,7 @@ public class Walking : Node, IState
         var root = GetParent().GetParent() as PlatformBody;
         var sprite = root.GetChild(0) as Sprite;
         
-	    root.UpdateMotion(delta, MaxRunSpeed * direction);
-	    
-        
+	    root.UpdateMotion(delta, MaxRunSpeed * direction);        
     }
 
-    public override void _Ready()
-    {
-        
-    }
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
 }

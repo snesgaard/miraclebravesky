@@ -24,6 +24,6 @@ func exit():
 	animation_co = null
 
 func update(dt):
-	if not Input.is_action_pressed("attack") and attack_ready:
-		emit_signal("finished", "attack")
-	root.speed = root.update_motion(dt, root.speed)
+	pass#if not Input.is_action_pressed("attack") and attack_ready:
+	#	emit_signal("finished", "attack")
+	#root.speed = root.update_motion(dt, root.speed)
