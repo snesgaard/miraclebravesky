@@ -675,3 +675,7 @@ Animation = "twohanded_charge_post_swing"
 [node name="EndSwing" type="Node" parent="StateMachine/AttackAnimation"]
 script = ExtResource( 22 )
 Animation = "twohanded_charge_swing2idle"
+
+[node name="WalkAnimation" type="Node" parent="StateMachine"]
+script = ExtResource( 22 )
+Animation = "twohand_run_run"

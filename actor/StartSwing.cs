@@ -6,6 +6,9 @@ public class StartSwing : Node, IState
     
     [Export]
     public string Animation{get;set;}
+    
+    public string Activation {get;set;}
+    
     bool isActive = false;
     float time;
     public void Activate()
@@ -19,19 +22,16 @@ public class StartSwing : Node, IState
 
     public void Deactivate()
     {
-        Debug.WriteLine("Stop " + this.Name);
-        //var anim = FindParent("root").GetChild(1) as AnimationPlayer;
-        //anim.Stop();
+    
     }
 
-    public bool IsActive() => isActive;
+    public bool IsActive() => isActive || (!string.IsNullOrWhiteSpace(Activation) && this.GetParentOrNull<StateMachine>().Active("Walking"));
 
     public void Update(float delta)
     {
         time -= delta;
         if(time < 0){
             isActive = false;
-        }
-        
+        }    
     }
 }

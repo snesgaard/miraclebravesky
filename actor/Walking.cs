@@ -13,11 +13,12 @@ public class Walking : Node, IState
     {
         var parent = (StateMachine)GetParent();
         direction = parent.Active("WalkLeft") ? 1 : -1;
+        Debug.WriteLine("Start " + this.Name);
     }
 
     public void Deactivate()
     {
-        
+        Debug.WriteLine("End " + this.Name);
     }
 
     public bool IsActive()
