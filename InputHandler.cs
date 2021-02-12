@@ -24,20 +24,36 @@ public class InputHandler : Node2D
   {
       var kin = this.GetParent() as KinematicBody2D;
       var foot = kin.GetNode("foot2") as foot2;
+    var anim = kin.GetNode("AnimationPlayer") as AnimationPlayer;
+      var sprite = kin.GetNode("Sprite") as Sprite;
       float MaxSpeed = this.MaxSpeed;
       if(foot.IsTouching == false){
         //MaxSpeed = 50;
       }
       float addedSpeed = 0;
-      if(Input.IsKeyPressed((int)KeyList.Left))
+      if(Input.IsKeyPressed((int)KeyList.Left)){
+          
           addedSpeed += -1;
+          sprite.SetScale(new Vector2(-1,1));
+        }
       
-      if(Input.IsKeyPressed((int)KeyList.Right))
+      if(Input.IsKeyPressed((int)KeyList.Right)){
+         sprite.SetScale(new Vector2(1,1));
           addedSpeed += 1;
+      }
 
       if(addedSpeed == 0){
         kin.velocity.x *= 0.4f;
-      }
+        var idleAnim = "twohand_run_run2idle";
+        if(anim.AssignedAnimation != idleAnim)
+            anim.Play(idleAnim);
+        
+      }else{
+        var run_anim = "twohand_run_run";
+         
+          anim.Play(run_anim);
+        }
+        
     
       if(addedSpeed < 0){
         (kin.GetNode("Gun") as Gun).Direction = true;
